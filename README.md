@@ -1,4 +1,4 @@
-# plextube
+# plextube [![CI](https://github.com/bahlo/plextube/actions/workflows/ci.yml/badge.svg)](https://github.com/bahlo/plextube/actions/workflows/ci.yml)
 
 A dead-simple YouTube downloader, meant for Plex.
 
