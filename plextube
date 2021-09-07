@@ -1,6 +1,8 @@
 #!/bin/bash
 
-set -o pipefail
+set -eo pipefail
+
+cd /opt/plextube/videos
 
 while true; do
 	xargs -n1 yt-dlp \
@@ -12,7 +14,7 @@ while true; do
 		--dateafter now-2weeks \
 		--break-on-reject \
 		--embed-subs \
-		--compat-options filename -- < subs.txt
+		--compat-options filename -- < subs.txt || true
 
 	sleep 600
 done
