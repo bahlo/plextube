@@ -8,6 +8,7 @@ Create a text file called `subs.txt` and fill it with YouTube channels or playli
 Then run the docker container like this:
 ```
 docker run \ 
+  -v archive:/opt/plextube/archive \
   -v subs.txt:/opt/plextube/subs.txt \
   -v videos:/opt/plextube/videos \
   ghcr.io/bahlo/plextube 

@@ -14,7 +14,8 @@ while true; do
 		--dateafter now-2weeks \
 		--break-on-reject \
 		--embed-subs \
-		--compat-options filename -- < /opt/plextube/subs.txt || true
+		--compat-options filename \
+		--download-archive /opt/plextube/archive -- < /opt/plextube/subs.txt || true
 
 	sleep 600
 done
