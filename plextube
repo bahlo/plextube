@@ -1,5 +1,18 @@
-#!/bin/sh
+#!/bin/bash
 
-set -e
+set -o pipefail
 
-echo hi
+while true; do
+	xargs -n1 yt-dlp \
+		--embed-thumbnail \
+		--add-metadata \
+		-f best \
+		-cw \
+		--yes-playlist \
+		--dateafter now-2weeks \
+		--break-on-reject \
+		--embed-subs \
+		--compat-options filename -- < subs.txt
+
+	sleep 600
+done
