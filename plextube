@@ -15,7 +15,6 @@ while true; do
 		--break-on-reject \
 		--embed-subs \
 		--compat-options filename \
+		--min-sleep-interval 5 --max-sleep-interval 30 \
 		--download-archive /opt/plextube/archive -- < /opt/plextube/subs.txt || true
-
-	sleep 600
 done
