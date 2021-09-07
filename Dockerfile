@@ -1,13 +1,14 @@
-FROM python:3
+FROM python:3-alpine
+
+ENV ATOMIC_PARSLEY_RELEASE=20210715.151551.e7ad03a
 
 COPY requirements.txt ./
-RUN wget https://github.com/wez/atomicparsley/releases/download/20210715.151551.e7ad03a/AtomicParsleyLinux.zip && \
-	unzip AtomicParsleyLinux.zip && \
+RUN wget https://github.com/wez/atomicparsley/releases/download/$ATOMIC_PARSLEY_RELEASE/AtomicParsleyAlpine.zip && \
+	unzip AtomicParsleyAlpine.zip && \
 	mv AtomicParsley /usr/local/bin && \
-	rm AtomicParsleyLinux.zip && \
-	apt-get update && apt-get install -y ffmpeg && \
-	rm -rf /var/cache/apt/archives && \
-	pip install --no-cache-dir -r requirements.txt && \
+	rm AtomicParsleyAlpine.zip && \
+	apk add --no-cache gcc libc-dev ffmpeg bash && \
+	python3 -m pip install --no-cache-dir -r requirements.txt && \
 	mkdir -p /opt/plextube && \
 	touch /opt/plextube/archive
 
