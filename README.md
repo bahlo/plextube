@@ -15,3 +15,5 @@ docker run \
 ```
 
 plextube will automatically download the last two weeks of videos and delete the ones that are older.
+
+In Plex, create a library of the type `Other Videos`. Go to Settings → Agents and make sure `Local Media Assets` is the topmost agent for Movies → Personal Media.
