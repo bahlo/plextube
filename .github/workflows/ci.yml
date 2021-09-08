@@ -6,17 +6,22 @@ on:
       - main
 
 jobs:
+  check:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: shellcheck plextube
   docker:
     name: Docker
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
       - uses: docker/login-action@v1
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ github.token }}
       - run: |
-          docker build -t ghcr.io/bahlo/plextube:latest .
-          docker push ghcr.io/bahlo/plextube:latest
+          docker build -t ghcr.io/${GITHUB_REPOSITORY}:latest .
+          docker push ghcr.io/${GITHUB_REPOSITORY}:latest
